@@ -105,7 +105,7 @@ if __name__ == "__main__":
             result_dict_list = np.load(group_smpl_path, allow_pickle=True)
             result_dict_first = np.load(driving_paths[0], allow_pickle=True).item()
             i = 0
-            for smpl_outs, cam_t, foc_len, file_path in tqdm(
+            for smpl_outs, cam_t, file_path in tqdm(
                 zip(result_dict_list["smpl"], result_dict_list["camera"], driving_paths)
             ):
                 img_fn, _ = os.path.splitext(os.path.basename(file_path))
