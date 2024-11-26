@@ -106,7 +106,7 @@ if __name__ == "__main__":
             result_dict_first = np.load(driving_paths[0], allow_pickle=True).item()
             i = 0
             for smpl_outs, cam_t, foc_len, file_path in tqdm(
-                zip(result_dict_list["smpl"], result_dict_list["camera"], result_dict_list["scaled_focal_length"], driving_paths)
+                zip(result_dict_list["smpl"], result_dict_list["camera"], driving_paths)
             ):
                 img_fn, _ = os.path.splitext(os.path.basename(file_path))
                 result_dict = {key: value for key, value in result_dict_first.items()}
@@ -118,7 +118,6 @@ if __name__ == "__main__":
                 if args.view_transfer:
                     scaled_focal_length = reference_dict["scaled_focal_length"]
                     result_dict["cam_t"] = reference_dict["cam_t"]
-                    result_dict["scaled_focal_length"] = scaled_focal_length
                 # transfer reference SMPL shape to driving SMPLs
                 if args.figure_transfer:
                     result_dict["smpls"]["betas"] = reference_dict["smpls"]["betas"]
